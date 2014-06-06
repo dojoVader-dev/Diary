@@ -7,7 +7,7 @@ if($articles):
        <?php echo $articles;?>
     </div>
     <br /><br />
-	<div class="col-md-7 col-lg-7 col-sm-7 col-xs-7" >
+	<div class="col-md-8 col-lg-8 col-sm-8 col-xs-8" >
 
 		<div class="diarybar">
 		<i class="fa fa-pencil pull-left"> <span data-dojo-type='dojox/mvc/Output' id='DiaryTitle' data-dojo-props="value: at(DiaryModel, 'title')"></span></i>
