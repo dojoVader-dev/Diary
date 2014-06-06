@@ -23,8 +23,9 @@ class Helper {
 		}
 	}
 
-	static public function getList(){
-		return ipDb()->selectAll('diary_blog',"*");
+	static public function getList($limit){
+		$sql=sprintf("select * from %s LIMIT %d",ipTable("diary_blog"),$limit);
+		return ipDb()->fetchAll($sql);
 	}
 
 	static public function getArticleById($id){

@@ -33,12 +33,22 @@ border:1px solid lightpink;
 #diarysetting:extend(#diaryrte){
 	width:29%;
 }
-.ipModuleAdministrators ._menu{
-	margin-left:-200px !important;
+.customMenu:extend(._menu){
+
+position: none !important;
+  border-right:1px solid #d8d8d8;
+ul{
+	a,li{
+		list-style: none !important;
+	}
+}
 }
 .ipsGrid{
 	padding:2% !important;
 }
-.ip .ipModuleAdministrators ._menu ul a{
+.ip .ipModuleAdministrators {
+	padding-left:2% !important;
+	._menu ul a{
 	padding: 1px 20px;
+	}
 }

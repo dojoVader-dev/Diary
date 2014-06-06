@@ -35,6 +35,7 @@ class AdminController extends \Ip\GridController {
 				'form' => $formView
 		) );
 	}
+
 	public function index() {
 		$model = new Model ();
 
@@ -45,6 +46,17 @@ class AdminController extends \Ip\GridController {
 		return ipView ( "view/ui.php", array (
 				'articles' => $articles
 		) );
+	}
+	public function grid()
+	{
+		$worker = new \Ip\Internal\Grid\Worker($this->config());
+		$result = $worker->handleMethod(ipRequest());
+
+		if (is_array($result) && !empty($result['error']) && !empty($result['errors'])) {
+			return new \Ip\Response\Json($result);
+		}
+
+		return new \Ip\Response\JsonRpc($result);
 	}
 	public function edit() {
 		$id = ( int ) ipRequest ()->getQuery ( 'id' );
@@ -230,8 +242,11 @@ class AdminController extends \Ip\GridController {
 	}
 	public function manageCategory() {
 		// HEhehehehe Borrowed Code from GridController
-		ipAddJs ( 'Ip/Internal/Grid/assets/grid.js' );
+		ipAddJsVariable('GridAction',ipRequest ()->getRequest ( 'aa' ));
+		ipAddJs('assets/js/Grid.js');
 		ipAddJs ( 'Ip/Internal/Grid/assets/gridInit.js' );
+		
+
 
 		$controllerClass = get_class ( $this );
 		$controllerClassParts = explode ( '\\', $controllerClass );
@@ -254,6 +269,7 @@ class AdminController extends \Ip\GridController {
 			case "Diary.manageCategory" :
 				return array (
 						'title' => 'Category List',
+						'type'=>'table',
 						'table' => 'diary_category',
 						'deleteWarning' => __ ( 'Do you really want to delete this item?', 'FormExample' ),
 						'sortField' => 'id',
@@ -292,6 +308,7 @@ class AdminController extends \Ip\GridController {
 			case "Diary.comment" :
 				return array (
 						'title' => 'Comment List',
+						'type'=>'table',
 						'table' => 'dairy_comments',
 						'deleteWarning' => __ ( 'Do you really want to delete this item?', 'FormExample' ),
 						'sortField' => 'id',

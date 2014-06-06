@@ -10082,11 +10082,19 @@
 #diarysetting {
   width: 29%;
 }
-.ipModuleAdministrators ._menu {
-  margin-left: -200px !important;
+.customMenu {
+  position: none !important;
+  border-right: 1px solid #d8d8d8;
+}
+.customMenu ul a,
+.customMenu ul li {
+  list-style: none !important;
 }
 .ipsGrid {
   padding: 2% !important;
+}
+.ip .ipModuleAdministrators {
+  padding-left: 2% !important;
 }
 .ip .ipModuleAdministrators ._menu ul a {
   padding: 1px 20px;

@@ -52,7 +52,7 @@ class Model {
 	 * @return multitype:
 	 */
 	public function getArticles(){
-		return Helper::getList();
+		return Helper::getList(ipGetOption('Diary.diaryPosts'));
 	}
 
 	public function getArticleById($id){

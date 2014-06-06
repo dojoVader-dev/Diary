@@ -3,11 +3,11 @@ if($articles):
 ?>
 
 <div class="ipModuleAdministrators ipsModuleAdministrators edit">
-    <div class="_menu">
+    <div class="col-sm-3 col-lg-3 col-md-3 customMenu" style="width:300px">
        <?php echo $articles;?>
     </div>
     <br /><br />
-	<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	<div class="col-md-7 col-lg-7 col-sm-7 col-xs-7" >
 
 		<div class="diarybar">
 		<i class="fa fa-pencil pull-left"> <span data-dojo-type='dojox/mvc/Output' id='DiaryTitle' data-dojo-props="value: at(DiaryModel, 'title')"></span></i>

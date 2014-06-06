@@ -3,5 +3,17 @@
     "version": "0.01",
     "name": "Diary",
     "description": "A Simple Diary to hold notes,thoughts and scribblings",
-    "author": "Okeowo Aderemi"
+    "author": "Okeowo Aderemi",
+     "options": [
+        {
+            "label": "Diary Posts Per Page",
+            "name": "diaryPosts",
+            "type": "text",
+            "default": "4"
+        },{
+             "label": "Enable Comments",
+            "name": "diaryComments",
+            "type": "checkbox",
+            "default": "true"
+        }]
 }
