@@ -7,7 +7,7 @@ foreach($data as $post):?>
 					<p><bd>January 18, 2014</bd></p>
 
 					<p>
-					<?php echo $post['content']?>
+					<?php echo Helper::getContent($post['content'], $post)?>
 					</p><hr/>
 </div>
 
@@ -19,6 +19,7 @@ foreach($data as $post):?>
 <?php
 
 ?>
+<div class="col-lg-8 col-lg-offset-2">
     <ul class="pagination">
         <?php if ($currentPage > 1) { ?>
             <li><a href="<?php echo Helper::setDiaryUrl(array("current"=>$currentPage - 1));?>" class="ipsAction" data-method="init" data-params="<?php echo escAttr(json_encode(array('page' => $currentPage - 1))) ?>">&laquo;</a></li>
@@ -40,4 +41,5 @@ foreach($data as $post):?>
             <li class="disabled"><a href="#">&raquo;</a></li>
         <?php } ?>
     </ul>
+    </div>
 <?php } ?>

@@ -38,11 +38,9 @@ class AdminController extends \Ip\GridController {
 
 	public function index() {
 		$model = new Model ();
-
-		$posts = $model->getArticles ();
-		$articles = ipView ( "view/listArticles.php", array (
-				'posts' => $posts
-		) )->render ();
+	    $currentPageIdx=ipRequest()->getQuery("current",1);
+		$posts = $model->getPaginator("diary_blog", $currentPageIdx);
+		$articles=$posts->render(__DIR__."/view/listArticles.php");
 		return ipView ( "view/ui.php", array (
 				'articles' => $articles
 		) );
@@ -201,7 +199,7 @@ class AdminController extends \Ip\GridController {
 					//Success
 					$data=array(
 							"status"=>"success",
-							"message"=>sprintf("The Note #%d has been updated successfully ",$id)
+							"message"=>sprintf("The Note #%d has been updated successfully ",$note->id)
 					);
 				}
 			}
@@ -245,7 +243,7 @@ class AdminController extends \Ip\GridController {
 		ipAddJsVariable('GridAction',ipRequest ()->getRequest ( 'aa' ));
 		ipAddJs('assets/js/Grid.js');
 		ipAddJs ( 'Ip/Internal/Grid/assets/gridInit.js' );
-		
+
 
 
 		$controllerClass = get_class ( $this );

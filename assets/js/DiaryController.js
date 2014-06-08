@@ -80,6 +80,7 @@ define(['dojox/mvc/Output','dojo/Stateful','dojox/mvc/at','dojo/on',
              dataType: 'json'
          }).done(function(data){
         	 var CacheElement=$('#DiaryDialog');
+        	 CacheElement.find('.modal-body').html("");
         	 CacheElement.find('.modal-body').html(data.message);
         	 CacheElement.find('.modal-title').html('Delete Note Status');
         	 CacheElement.modal('show');
@@ -87,6 +88,7 @@ define(['dojox/mvc/Output','dojo/Stateful','dojox/mvc/at','dojo/on',
         	 $("#post-"+e.currentTarget.dataset.id).remove();
          }).fail(function(error){
         	 var CacheElement=$('#DiaryDialog');
+        	 CacheElement.find('.modal-body').html("");
         	 CacheElement.find('.modal-body').html(data.message);
         	 CacheElement.find('.modal-title').html('Delete Note Status');
         	 CacheElement.modal('show');

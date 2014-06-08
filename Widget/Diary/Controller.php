@@ -22,7 +22,11 @@ class Controller extends \Ip\WidgetController{
     {
     	$articlesData=new Model();
     	$data['items']=$articlesData->getArticles();
-
+    	$model=new Model();
+    	$currentPageIdx=ipRequest()->getQuery("current",1);
+    	$posts = $model->getPaginator("diary_blog", $currentPageIdx);
+		$content=$posts->render(__DIR__."/../../view/_blogs.php");
+		$data['content']=$content;
     	return parent::generateHtml($revisionId, $widgetId, $data, $skin);
     }
 
