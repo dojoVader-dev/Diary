@@ -17,7 +17,7 @@ Diary is a plugin created by Okeowo Aderemi, the purpose of this plugin is to cr
 
 
 ###Public Page
-![FrontPage](https://www.flickr.com/photos/89036056@N08/14166484320/)
+![FrontPage](https://flic.kr/p/nzQWeE)
 
 
 If you have a feature you have in mind or want to modify the code, feel free and you can contact me at okeowoaderemi@gmail.com
