@@ -6,7 +6,8 @@ class Event {
 
 	public static function ipBeforeController($e){
 		//We don't want it to run on every Plugin
-		if($e['plugin'] === "Diary"){
+
+		if($e['plugin'] === "Diary" && $e['controller'] === "AdminController"){
 		$submenu=Submenu::getSubmenuItems();
 		ipAddCss("assets/css/diary.css");
 		ipResponse()->setLayoutVariable("submenu",$submenu);
