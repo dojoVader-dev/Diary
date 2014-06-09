@@ -17,7 +17,10 @@ Diary is a plugin created by Okeowo Aderemi, the purpose of this plugin is to cr
 
 
 ###Public Page
-![FrontPage](https://flic.kr/p/nzQWeE)
 
+####Articles
+![FrontPage](https://github.com/dojoVader/Diary/raw/master/screenshots/Articles.png)
+####Single Article
+![Single Page](https://github.com/dojoVader/Diary/raw/master/screenshots/Single.png)
 
 If you have a feature you have in mind or want to modify the code, feel free and you can contact me at okeowoaderemi@gmail.com
