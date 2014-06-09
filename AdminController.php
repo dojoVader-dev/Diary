@@ -40,9 +40,11 @@ class AdminController extends \Ip\GridController {
 		$model = new Model ();
 	    $currentPageIdx=ipRequest()->getQuery("current",1);
 		$posts = $model->getPaginator("diary_blog", $currentPageIdx);
+		
 		$articles=$posts->render(__DIR__."/view/listArticles.php");
+		
 		return ipView ( "view/ui.php", array (
-				'articles' => $articles
+				'articles' => ($articles === null ) ? "<h1>No Notes</h1>" : $articles
 		) );
 	}
 	public function grid()
