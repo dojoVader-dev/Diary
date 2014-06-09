@@ -199,7 +199,7 @@ class AdminController extends \Ip\GridController {
 					//Success
 					$data=array(
 							"status"=>"success",
-							"message"=>sprintf("The Note #%d has been updated successfully ",$note->title)
+							"message"=>sprintf("The Note %s has been updated successfully ",$note->title)
 					);
 				}
 			}
