@@ -20,7 +20,7 @@ class Worker extends \Ip\SetupWorker
         PRIMARY KEY (`id`)
         )';
         $sql2=' CREATE TABLE IF NOT EXISTS
-           ' . ipTable('dairy_comments') . '
+           ' . ipTable('diary_comments') . '
         (
         `id` int(11) NOT NULL AUTO_INCREMENT,
         `post_id` int(11),
