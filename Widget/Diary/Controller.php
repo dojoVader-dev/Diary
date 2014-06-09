@@ -26,7 +26,7 @@ class Controller extends \Ip\WidgetController{
     	$currentPageIdx=ipRequest()->getQuery("current",1);
     	$posts = $model->getPaginator("diary_blog", $currentPageIdx);
 		$content=$posts->render(__DIR__."/../../view/_blogs.php");
-		$data['content']=$content;
+		$data['content']=($content === null) ? ipView(__DIR__."/../../view/empty.php") : $content;
     	return parent::generateHtml($revisionId, $widgetId, $data, $skin);
     }
 

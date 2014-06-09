@@ -34,20 +34,22 @@ class Model {
 	/**
 	 * This returns the Paginator holding the data
 	 *
-	 * @param unknown $table
-	 * @param unknown $ppp
+	 * @param string name of the table
+	 * @param int CurrentPage 
+	 * @return IP\Pagination if result is found and FALSE if empty result
 	 */
 	public function getPaginator($table, $currentPageIdx) {
 		// let's fetch the total from the Database first
 		$pageSize=(int) ipGetOption ( 'Diary.diaryPosts' ) ;
 		$recordCount = (int)ipDb ()->fetchValue ( sprintf ( "SELECT COUNT(*) from %s", ipTable ($table) ) );
-		$totalPages = ceil ( $recordCount / $pageSize);
+		$totalPages =(int) ceil ( $recordCount / $pageSize);
 		$currentPage = $currentPageIdx;
 		if ($currentPage > $totalPages) {
 			$currentPage = $totalPages;
 		}
-		$from = ($currentPage - 1) * $pageSize;
+		$from = (abs($currentPage - 1)) * $pageSize;
 
+		//Empty Result
 		$pagination = new \Ip\Pagination\Pagination ( array (
 				'data'=>$this->fetch($from, $pageSize),
 				'currentPage' => $currentPage,
@@ -55,6 +57,9 @@ class Model {
 				'pagerSize' => $pageSize
 		) );
 		return $pagination;
+		
+		
+
 	}
 	public function fetch($from, $count, $where = 1) {
 
@@ -73,8 +78,9 @@ class Model {
 	            LIMIT
 	            $from, $count
 	            ";
-
+	   
 		$result = ipDb ()->fetchAll ( $sql );
+
 
 		return $result;
 	}
