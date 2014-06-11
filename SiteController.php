@@ -1,7 +1,8 @@
 <?php
 namespace Plugin\Diary;
+use Plugin\Diary\Forms\CommentForm;
+class SiteController extends \Ip\Controller
 
-class PublicController extends \Ip\Controller
 {
 
     public function read()
@@ -9,8 +10,10 @@ class PublicController extends \Ip\Controller
 
 		$article=new Model();
 		$id=(int)ipRequest()->getQuery('post');
+		$commentForm=new CommentForm();
 
 		$data=$article->getArticleById($id);
+		$data['form']=$commentForm->getForm();
 		return ipView(__DIR__."/view/_article.php",$data)->render();
 
 

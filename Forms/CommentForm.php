@@ -29,6 +29,8 @@ class CommentForm {
 	 * Create the Fields for the Form
 	 */
 	public function createFields(){
+		//Create the FieldSet looks to Boring
+		$this->_form->addFieldset(new \Ip\Form\Fieldset("Leave a Reply"));
 		$name=new \Ip\Form\Field\Text(
 			 array(
 			'name'=>'author',
@@ -51,7 +53,7 @@ class CommentForm {
 
 		$this->_form->addField($email);
 
-		$website=new \Ip\Form\Field\Url(
+		$website=new \Ip\Form\Field\Text(
 			array(
 			"name"=>"url",
 			"label"=>"Website"
@@ -73,7 +75,8 @@ class CommentForm {
 
 		$this->_form->addField(new \Ip\Form\Field\Submit(
 				array(
-						'value' => 'Save'
+						'value' => 'Submit',
+						'css'=>"btn btn-primary"
 				)
 		));
 
