@@ -4,6 +4,7 @@ namespace Plugin\Diary\Forms;
 
 use Plugin\Diary\Helper;
 use Plugin\Diary\CategoryModel;
+use Ip\Form;
 
 /**
  * This contains the Form to create the Comment form
@@ -70,8 +71,25 @@ class CommentForm {
 
 		$this->_form->addField($message);
 
+		$this->_form->addField(new \Ip\Form\Field\Submit(
+				array(
+						'value' => 'Save'
+				)
+		));
+
+		$this->_form->addField(new \Ip\Form\Field\Hidden(array(
+				'name' => 'aa',
+				'value' => 'Diary.commentSave',
+		)));
+		$this->_form->setEnvironment(\Ip\Form::ENVIRONMENT_ADMIN);
+		$this->_form->setMethod(\Ip\Form::METHOD_POST);
 
 
+
+	}
+
+	public function getForm(){
+		return $this->_form;
 	}
 }
 ?>
