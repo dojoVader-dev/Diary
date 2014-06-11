@@ -15,5 +15,10 @@
             "name": "diaryComments",
             "type": "checkbox",
             "default": "true"
+        },{
+            "label":"Select Comment Type",
+            "name":"diaryCommentType",
+            "type","select",
+
         }]
 }
