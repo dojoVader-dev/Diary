@@ -8,17 +8,20 @@ class SiteController extends \Ip\Controller
 
     public function read()
     {
+    	ipAddJsContent("create","
+            require(['Diary/CommentController'],function(comment){
+                comment.init();
 
+                });
+                ");
 		$article=new Model();
 		$id=(int)ipRequest()->getQuery('post');
-		$commentForm=new CommentForm();
-
+		$commentForm=Helper::getCommentForm();
+        $commentForm->getField('post_id')->setValue($id);
 		$data=$article->getArticleById($id);
+		$data['form']=$commentForm;
 
-
-		$data['form']=$commentForm->getForm();
-
-		return ipView(__DIR__."/view/_article.php",$data)->render();
+		return ipView(__DIR__."/view/frontend/_article.php",$data)->render();
 
 
     }
@@ -42,6 +45,7 @@ class SiteController extends \Ip\Controller
     			$comment->url=ipRequest()->getQuery("url");
     			$comment->author=ipRequest()->getQuery("auhtor");
     			$comment->content=ipRequest()->getQuery("content");
+                $comment->post_id=(int)ipRequest()->getQuery('post_id');
     			try{
     				if ($id = $comment->save()) {
     					// Redirect to the Edit Page
@@ -65,6 +69,7 @@ class SiteController extends \Ip\Controller
     			}
     		}
     	}
+    	return new \Ip\Response\Json($status);
     }
 
 
