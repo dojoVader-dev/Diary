@@ -62,7 +62,7 @@ class CommentForm {
 
 		$this->_form->addField($website);
 
-		$message=new \Ip\Form\Field\TextArea(
+		$message=new \Ip\Form\Field\Textarea(
 			array(
 			"name"=>'message',
 			'label'=>"Comment"
@@ -74,7 +74,7 @@ class CommentForm {
 		$this->_form->addField($message);
 
 		//PostID
-		$hidden=new \Ip\Form\Field\Hiiden(array("name"=>"post_id"));
+		$hidden=new \Ip\Form\Field\Hidden(array("name"=>"post_id"));
 		$this->_form->addField($hidden);
 
 
@@ -87,9 +87,9 @@ class CommentForm {
 
 		$this->_form->addField(new \Ip\Form\Field\Hidden(array(
 				'name' => 'sa',
-				'value' => 'Diary.read',
+				'value' => 'Diary.CommentSave',
 		)));
-		$this->_form->setEnvironment(\Ip\Form::ENVIRONMENT_ADMIN);
+		$this->_form->setEnvironment(\Ip\Form::ENVIRONMENT_PUBLIC);
 		$this->_form->setMethod(\Ip\Form::METHOD_POST);
 		$this->_form->setAjaxSubmit(true);
 
