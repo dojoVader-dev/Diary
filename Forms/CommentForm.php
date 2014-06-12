@@ -81,11 +81,12 @@ class CommentForm {
 		));
 
 		$this->_form->addField(new \Ip\Form\Field\Hidden(array(
-				'name' => 'aa',
-				'value' => 'Diary.commentSave',
+				'name' => 'sa',
+				'value' => 'Diary.read',
 		)));
 		$this->_form->setEnvironment(\Ip\Form::ENVIRONMENT_ADMIN);
 		$this->_form->setMethod(\Ip\Form::METHOD_POST);
+		$this->_form->setAjaxSubmit(false);
 
 
 

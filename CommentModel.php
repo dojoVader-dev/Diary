@@ -15,7 +15,8 @@ class CommentModel
 {
     public $post_id;
     public $author, $email, $content, $url, $date, $modified, $approved, $parent;
-
+	const PENDING=0;
+	const APPROVED=1;
     /**
      * Save the Data to the Database
      * @return mixed
@@ -45,6 +46,8 @@ class CommentModel
 
     private function beforeSave(){
     	$this->date=$this->modified=date('Y-m-d H:i:s',time());
+    	$this->approved=self::PENDING;
+    	$this->parent=0;
     }
 }
 ?>

@@ -30,8 +30,8 @@ class AdminController extends \Ip\GridController {
 				");
 		$noteform = Helper::getNoteForm ();
 		$noteform->getField ( 'category_id' )->setValues ( $categoryModel->getCategoryOptions () );
-		$formView = $noteform->render ( ipView ( "view/form/add.php" ) );
-		return ipView ( "view/add.php", array (
+		$formView = $noteform->render ( ipView ( "view/backend/form/add.php" ) );
+		return ipView ( "view/backend/add.php", array (
 				'form' => $formView
 		) );
 	}
@@ -40,10 +40,10 @@ class AdminController extends \Ip\GridController {
 		$model = new Model ();
 	    $currentPageIdx=ipRequest()->getQuery("current",1);
 		$posts = $model->getPaginator("diary_blog", $currentPageIdx);
-		
-		$articles=$posts->render(__DIR__."/view/listArticles.php");
-		
-		return ipView ( "view/ui.php", array (
+
+		$articles=$posts->render(__DIR__."/view/backend/listArticles.php");
+
+		return ipView ( "view/backend/ui.php", array (
 				'articles' => ($articles === null ) ? "<h1>No Notes</h1>" : $articles
 		) );
 	}
@@ -91,8 +91,8 @@ class AdminController extends \Ip\GridController {
 
 		$noteform->getField ( 'category_id' )->setValues ( $categoryModel->getCategoryOptions () );
 		$noteform->getField('category_id')->setValue($edit['category_id']);
-		$formView = $noteform->render ( ipView ( "view/form/add.php"));
-		return ipView ( "view/add.php", array (
+		$formView = $noteform->render ( ipView ( "view/backend/form/add.php"));
+		return ipView ( "view/backend/add.php", array (
 				'form' => $formView
 		) );
 	}
@@ -105,7 +105,7 @@ class AdminController extends \Ip\GridController {
 	public function createCategory() {
 		$articles = Helper::getEditMenu ();
 		$form = Helper::getCategoryForm ();
-		return ipView ( "view/category.php", array (
+		return ipView ( "view/backend/category.php", array (
 				"articles" => $articles,
 				"form" => $form
 		) );
@@ -261,7 +261,7 @@ class AdminController extends \Ip\GridController {
 		$variables = array (
 				'gateway' => $gateway
 		);
-		$content = ipView ( 'view/placeholder.php', $variables )->render ();
+		$content = ipView ( 'view/backend/placeholder.php', $variables )->render ();
 		return $content;
 	}
 	public function config() {
@@ -309,7 +309,7 @@ class AdminController extends \Ip\GridController {
 				return array (
 						'title' => 'Comment List',
 						'type'=>'table',
-						'table' => 'dairy_comments',
+						'table' => 'diary_comments',
 						'deleteWarning' => __ ( 'Do you really want to delete this item?', 'FormExample' ),
 						'sortField' => 'id',
 						'createPosition' => 'top',
