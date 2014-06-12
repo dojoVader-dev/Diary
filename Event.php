@@ -11,7 +11,7 @@ class Event {
 		$submenu=Submenu::getSubmenuItems();
 		ipAddCss("assets/css/diary.css");
 		ipResponse()->setLayoutVariable("submenu",$submenu);
-		$path=ipFileUrl('Plugin/Diary/assets/js');
+
 		ipAddJsContent("dojoConfig","var dojoConfig={
 		async:true,
 		parseOnLoad:false,
@@ -22,10 +22,19 @@ class Event {
 		ipAddJs("http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js",null,50);
 		ipAddJs("assets/js/boot.js",null,90);
 		ipAddCss("http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/claro/claro.css");
-
-
-
-
+		}
+		else if($e['plugin'] === 'Diary' && $e['controller'] === "SiteController"){
+			$path=ipFileUrl('Plugin/Diary/assets/js');
+			ipAddJsContent("dojoConfig","var dojoConfig={
+			async:true,
+			parseOnLoad:false,
+			selectorEngine: 'acme',
+			packages
+			:[{name:'Diary',location:'$path'}]
+			}",40);
+			ipAddJs("http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js",null,50);
+			ipAddJs("assets/js/boot.js",null,90);
+			ipAddCss("http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/claro/claro.css");
 		}
 	}
 }
