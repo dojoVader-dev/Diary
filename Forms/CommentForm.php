@@ -62,7 +62,7 @@ class CommentForm {
 
 		$this->_form->addField($website);
 
-		$message=new \Ip\Form\Field\Textarea(
+		$message=new \Ip\Form\Field\TextArea(
 			array(
 			"name"=>'message',
 			'label'=>"Comment"
@@ -72,6 +72,11 @@ class CommentForm {
 		$message->addValidator("Required");
 
 		$this->_form->addField($message);
+
+		//PostID
+		$hidden=new \Ip\Form\Field\Hiiden(array("name"=>"post_id"));
+		$this->_form->addField($hidden);
+
 
 		$this->_form->addField(new \Ip\Form\Field\Submit(
 				array(
@@ -86,7 +91,7 @@ class CommentForm {
 		)));
 		$this->_form->setEnvironment(\Ip\Form::ENVIRONMENT_ADMIN);
 		$this->_form->setMethod(\Ip\Form::METHOD_POST);
-		$this->_form->setAjaxSubmit(false);
+		$this->_form->setAjaxSubmit(true);
 
 
 
