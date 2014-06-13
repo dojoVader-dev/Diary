@@ -331,6 +331,15 @@ class AdminController extends \Ip\GridController {
 												'Required'
 										)
 								),
+								array(
+									'type'=>'Select',
+									'label'=>'Enable Comments',
+									'field'=>'approved',
+									'values'=>array(
+										array(CommentModel::APPROVED,"Approve"),
+										array(CommentModel::PENDING,"Pending")
+									)
+								),
 
 								array (
 										'label' => __ ( 'Date', 'Comment' ),
