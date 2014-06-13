@@ -9,6 +9,7 @@ class CategoryModel extends BaseModel {
 	 * @param Array $data
 	 * @return int Record ID or false
 	 */
+	public $name="diary_category";
 	const DRAFT = 0;
 	const PUBLISHED = 1;
 	public function save($data) {

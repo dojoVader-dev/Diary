@@ -51,7 +51,7 @@ class BaseModel {
         SELECT
           *
         FROM
-          " . ipTable("diary_blog") . "
+          " . ipTable($this->name) . "
         WHERE
           " . $where . "
         ORDER BY

@@ -9,6 +9,10 @@
 					<?php echo $content?>
 					</div>
 					</p>
+	<!--Comment-->
+	<div class="col-md-12 col-lg-12">
+		<?php echo $comments;?>
+	</div>					
 	<!-- Form -->
 	<div class="col-md-12 col-lg-12">
 		<!-- Form Comment Template -->

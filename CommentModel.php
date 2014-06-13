@@ -13,6 +13,7 @@ namespace Plugin\Diary;
  */
 class CommentModel extends BaseModel
 {
+    public $name="diary_comments";
     public $post_id;
     public $author, $email, $content, $url, $date, $modified, $approved, $parent;
 	const PENDING=0;
@@ -51,8 +52,8 @@ class CommentModel extends BaseModel
     	$this->parent=0;
     }
 
-    public function list($current=1){
-    	return $this->getPaginator("ip_diary_comments",$current,20/*Oh oh hard Coding*/);
+    public function getComments($current=1){
+    	return $this->getPaginator("diary_comments",$current,20/*Oh oh hard Coding*/);
     }
 }
 ?>
