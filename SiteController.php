@@ -23,6 +23,11 @@ class SiteController extends \Ip\Controller
 
 		$data['form']=$commentForm;
 
+        //Fetch Commentmodel
+        $comment=new CommentModel();
+        $paginator=$comment->list()->render(__DIR__."/view/frontend/comments.php");
+        $data['comments']=$paginator;
+
 		return ipView(__DIR__."/view/frontend/_article.php",$data)->render();
 
 
