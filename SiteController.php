@@ -41,11 +41,11 @@ class SiteController extends \Ip\Controller
     		} else {
     			// success
     			$comment= new CommentModel();
-    			$comment->email=ipRequest()->getQuery("email");
-    			$comment->url=ipRequest()->getQuery("url");
-    			$comment->author=ipRequest()->getQuery("auhtor");
-    			$comment->content=ipRequest()->getQuery("content");
-                $comment->post_id=(int)ipRequest()->getQuery('post_id');
+    			$comment->email=ipRequest()->getPost("email");
+    			$comment->url=ipRequest()->getPost("url");
+    			$comment->author=ipRequest()->getPost("author");
+    			$comment->content=ipRequest()->getPost("content");
+                $comment->post_id=(int)ipRequest()->getPost('post_id');
     			try{
     				if ($id = $comment->save()) {
     					// Redirect to the Edit Page
@@ -61,11 +61,11 @@ class SiteController extends \Ip\Controller
     				 *@todo Send Error to Admin or Show when on Developer Mode
     				 */
     				$status["status"]="error";
-    				$status["message"]=$db->getMessage();
+    				$status["message"]=$db->getMessage(). " at ".$db->getLine();
     			}
     			catch(\Exception $e){
     				$status["status"]="error";
-    				$status["message"]=$e->getMessage();
+    				$status["message"]=$e->getMessage(). " at ".$e->getLine();
     			}
     		}
     	}
