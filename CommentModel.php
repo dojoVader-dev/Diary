@@ -51,8 +51,8 @@ class CommentModel extends BaseModel
     	$this->parent=0;
     }
 
-    public function list(){
-    	return
+    public function list($current=1){
+    	return $this->getPaginator("ip_diary_comments",$current,20/*Oh oh hard Coding*/);
     }
 }
 ?>
