@@ -64,7 +64,7 @@ class CommentForm {
 
 		$message=new \Ip\Form\Field\Textarea(
 			array(
-			"name"=>'message',
+			"name"=>'content',
 			'label'=>"Comment"
 		)
 		);
