@@ -19,6 +19,8 @@ class SiteController extends \Ip\Controller
 		$commentForm=Helper::getCommentForm();
         $commentForm->getField('post_id')->setValue($id);
 		$data=$article->getArticleById($id);
+		//Let's Fetch comment from the Database
+
 		$data['form']=$commentForm;
 
 		return ipView(__DIR__."/view/frontend/_article.php",$data)->render();
