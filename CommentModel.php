@@ -11,7 +11,7 @@ namespace Plugin\Diary;
  *@property approved
  *@property parent
  */
-class CommentModel
+class CommentModel extends BaseModel
 {
     public $post_id;
     public $author, $email, $content, $url, $date, $modified, $approved, $parent;
@@ -34,6 +34,7 @@ class CommentModel
         return ipDB()->insert('diary_comments',$inserts);
 
     }
+
 	/**
 	 * Update the Comment Table
 	 * @param Array of Update Field $data
@@ -48,6 +49,10 @@ class CommentModel
     	$this->date=$this->modified=date('Y-m-d H:i:s',time());
     	$this->approved=self::PENDING;
     	$this->parent=0;
+    }
+
+    public function list(){
+    	return
     }
 }
 ?>

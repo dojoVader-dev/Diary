@@ -10,7 +10,7 @@ namespace Plugin\Diary;
  */
 use Plugin\Diary\Helper as Helper;
 
-class Model {
+class Model extends BaseModel {
 	public $id;
 	public $author, $date, $content, $title, $status;
 	public $modified;
@@ -31,59 +31,8 @@ class Model {
 		);
 		return ipDb ()->insert ( "diary_blog", $saveData );
 	}
-	/**
-	 * This returns the Paginator holding the data
-	 *
-	 * @param string name of the table
-	 * @param int CurrentPage 
-	 * @return IP\Pagination if result is found and FALSE if empty result
-	 */
-	public function getPaginator($table, $currentPageIdx) {
-		// let's fetch the total from the Database first
-		$pageSize=(int) ipGetOption ( 'Diary.diaryPosts' ) ;
-		$recordCount = (int)ipDb ()->fetchValue ( sprintf ( "SELECT COUNT(*) from %s", ipTable ($table) ) );
-		$totalPages =(int) ceil ( $recordCount / $pageSize);
-		$currentPage = $currentPageIdx;
-		if ($currentPage > $totalPages) {
-			$currentPage = $totalPages;
-		}
-		$from = (abs($currentPage - 1)) * $pageSize;
-
-		//Empty Result
-		$pagination = new \Ip\Pagination\Pagination ( array (
-				'data'=>$this->fetch($from, $pageSize),
-				'currentPage' => $currentPage,
-				'totalPages' => $totalPages,
-				'pagerSize' => $pageSize
-		) );
-		return $pagination;
-		
-		
-
-	}
-	public function fetch($from, $count, $where = 1) {
-
-			$sortField = 'id';
 
 
-		$sql = "
-        SELECT
-          *
-        FROM
-          " . ipTable("diary_blog") . "
-        WHERE
-          " . $where . "
-        ORDER BY
-            `" . $sortField . "`
-	            LIMIT
-	            $from, $count
-	            ";
-	   
-		$result = ipDb ()->fetchAll ( $sql );
-
-
-		return $result;
-	}
 	public function update() {
 		$this->beforeSave ();
 		$updateData = array (

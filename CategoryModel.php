@@ -2,7 +2,7 @@
 
 namespace Plugin\Diary;
 
-class CategoryModel {
+class CategoryModel extends BaseModel {
 	/**
 	 * Inserts the Category into the Database
 	 *
