@@ -24,11 +24,11 @@ class CommentModel
     public function save() {
         $this->beforeSave();
         //Save the Data to the Database
-        $inserts = array("author", "email", "content", "url", "date", "modified", "approved", "parent");
+        $inserts = array("author"=>null, "email"=>null, "content"=>null, "url"=>null, "date"=>null, "modified"=>null, "approved"=>null, "parent"=>null);
         //Assign the data
-        foreach($inserts as $property){
-        	if(property_exists($this, $property)){
-        		$property=$this->{$property};
+        foreach($inserts as $property=>&$value){
+            if(isset($this->{$property})){
+                $value=$this->{$property};
         	}
         }
         return ipDB()->insert('diary_comments',$inserts);
