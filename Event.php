@@ -11,7 +11,7 @@ class Event {
 		$submenu=Submenu::getSubmenuItems();
 		ipAddCss("assets/css/diary.css");
 		ipResponse()->setLayoutVariable("submenu",$submenu);
-
+		$path=ipFileUrl('Plugin/Diary/assets/js');
 		ipAddJsContent("dojoConfig","var dojoConfig={
 		async:true,
 		parseOnLoad:false,
