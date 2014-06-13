@@ -24,7 +24,7 @@ class CommentModel
     public function save() {
         $this->beforeSave();
         //Save the Data to the Database
-        $inserts = array("author"=>null, "email"=>null, "content"=>null, "url"=>null, "date"=>null, "modified"=>null, "approved"=>null, "parent"=>null);
+        $inserts = array("author"=>null, "email"=>null, "content"=>null, "url"=>null, "date"=>null, "modified"=>null, "approved"=>null, "parent"=>null,"post_id"=>null);
         //Assign the data
         foreach($inserts as $property=>&$value){
             if(isset($this->{$property})){
