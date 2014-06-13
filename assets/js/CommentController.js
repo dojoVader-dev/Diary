@@ -16,10 +16,13 @@ define(['dijit/Dialog'],function(dialog) {
                             dia.set('content',resp.message);
                             dia.set('title',"Comment Status")
                             dia.show();
-                            
+
                             break;
                     }
                 }
+               if(resp.status === "success"){
+            	   //Clear the Form
+            	   jQuery(".ipModuleForm")[0].reset();               }
             });
         }
     }
