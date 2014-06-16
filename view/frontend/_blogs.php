@@ -4,7 +4,7 @@ foreach($data as $post):?>
   <div class="col-lg-8 col-lg-offset-2">
     <h1><?php echo $post['title'];?></h1>
 
-					<p><?php echo date("F j, Y, g:i a",strtotime($post['date'])); ?></p>
+					<p><?php echo date("F j, Y, g:i a",strtotime($post['date'])); ?>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-folder-open"></i> Category</p>
 
 					<p>
 					<?php echo Helper::getContent($post['content'], $post)?>
