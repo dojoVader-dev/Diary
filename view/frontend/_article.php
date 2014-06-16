@@ -9,6 +9,7 @@
 					<?php echo $content?>
 					</div>
 					</p>
+	<?php echo ipSlot("AddThis"); ?>				
 	<!--Comment-->
 	<div class="col-md-12 col-lg-12">
 		<?php echo $comments;?>
