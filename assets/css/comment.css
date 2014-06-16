@@ -1,0 +1,18 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+.diary_comment {
+  background: white !important;
+  padding: 1% !important;
+}
+.diary_left_arrow {
+  position: relative;
+  color: white !important;
+  left: -13px;
+}
+.diary_comment_container {
+  margin-bottom: 2% !important;
+}
