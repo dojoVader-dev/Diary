@@ -34,7 +34,10 @@ class Event {
 			}",40);
 			ipAddJs("http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js",null,50);
 			ipAddJs("assets/js/boot.js",null,90);
+			ipAddJs("assets/js/holder.js",null,90);
 			ipAddCss("http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/claro/claro.css");
+			//Font Awesome
+			ipAddCss("http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 		}
 	}
 }
