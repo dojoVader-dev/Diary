@@ -11,6 +11,7 @@ namespace Plugin\Diary;
 use Plugin\Diary\Helper as Helper;
 
 class Model extends BaseModel {
+	public $name="diary_blog";
 	public $id;
 	public $author, $date, $content, $title, $status;
 	public $modified;
