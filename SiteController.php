@@ -7,7 +7,7 @@ class SiteController extends \Ip\Controller
 {
 
     public function read()
-    {
+    {   ipAddCss("assets/css/comment.css");
     	ipAddJsContent("create","
             require(['Diary/CommentController'],function(comment){
                 comment.init();
