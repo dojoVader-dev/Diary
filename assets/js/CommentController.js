@@ -12,6 +12,11 @@ define(['dijit/Dialog'],function(dialog) {
                 if ("status" in resp) {
                     switch (resp.status) {
                         case "error":
+                            dia.set('content',resp.errors);
+                            dia.set('title',"Comment Status")
+                            dia.show();
+
+                            break;
                         case "success":
                             dia.set('content',resp.message);
                             dia.set('title',"Comment Status")
