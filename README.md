@@ -4,14 +4,14 @@ Diary is a plugin created by Okeowo Aderemi, the purpose of this plugin is to cr
 
 ##Features not yet Implemented
 ####Comments
-* Adding of Comments
-* Display of Comments on Notes
+* Adding of Comments - Done
+* Display of Comments on Notes - Done
 
 #### Diary Coverpage
-* Using of Image as cover page for post
+* Using of Image as cover page for post - 
 
 ####Category
-* Sub-Categories
+* Sub-Categories 
 
 ##Screenshots
 
