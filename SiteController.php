@@ -16,9 +16,16 @@ class SiteController extends \Ip\Controller
                 ");
 		$article=new Model();
 		$id=(int)ipRequest()->getQuery('post');
+        $data=$article->getArticleById($id);
+        //Assuming Record doesn't exists
+        if($data === null){
+            return new \Ip\Response\Redirect(ipHomeUrl());
+        }
 		$commentForm=Helper::getCommentForm();
         $commentForm->getField('post_id')->setValue($id);
-		$data=$article->getArticleById($id);
+	
+
+
 		//Let's Fetch comment from the Database
 
 		$data['form']=$commentForm;
