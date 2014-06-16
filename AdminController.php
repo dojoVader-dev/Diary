@@ -39,7 +39,7 @@ class AdminController extends \Ip\GridController {
 	public function index() {
 		$model = new Model ();
 	    $currentPageIdx=ipRequest()->getQuery("current",1);
-		$posts = $model->getPaginator("diary_blog", $currentPageIdx);
+		$posts = $model->getPaginator("diary_blog", $currentPageIdx,(int)ipGetOption ( 'Diary.diaryPosts' ));
 
 		$articles=$posts->render(__DIR__."/view/backend/listArticles.php");
 
