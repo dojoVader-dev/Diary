@@ -20,6 +20,7 @@ class Controller extends \Ip\WidgetController{
     }
     public function generateHtml($revisionId, $widgetId, $data, $skin)
     {
+        ipAddCss("http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
     	$articlesData=new Model();
     	$data['items']=$articlesData->getArticles();
     	$model=new Model();
