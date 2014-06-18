@@ -12,7 +12,11 @@ namespace Plugin\Diary;
 class Submenu {
     public static function getModuleNames()
     {
-        return array("Create Notes"=>"Diary.create","List Notes"=>'Diary.index',"Manage Comments"=> 'Diary.comment',"Manage Categories"=>'Diary.manageCategory');
+        return array("Create Notes"=>"Diary.create",
+        			"List Notes"=>'Diary.index',
+        			"Manage Comments"=> 'Diary.comment',
+        			"Manage Categories"=>'Diary.manageCategory',
+        			"Import from WordPress"=>'Diary.importWordPress');
     }
 
     public static function getSubmenuUrls()
