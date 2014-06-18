@@ -5,6 +5,7 @@ namespace Plugin\Diary;
 use Plugin\Diary\Forms\CategoryForm as CategoryForm;
 use Plugin\Diary\Forms\NoteForm;
 use Plugin\Diary\Forms\CommentForm;
+use Plugin\Diary\Forms\UploadForm;
 
 class Helper {
 	/**
@@ -47,6 +48,11 @@ class Helper {
 	static public function getCommentForm(){
 		$commentForm=new CommentForm();
 		return $commentForm->getForm();
+	}
+
+	static public function getUploadForm(){
+		$uploadForm=new UploadForm();
+		return $uploadForm->getForm();
 	}
 	static public function getNoteForm() {
 		$note = new NoteForm ();

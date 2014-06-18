@@ -96,6 +96,10 @@ class AdminController extends \Ip\GridController {
 				'form' => $formView
 		) );
 	}
+	public function importWordPress(){
+		$form=Helper::getUploadForm();
+		return ipView("view/backend/import.php",array("form"=>$form));
+	}
 	private function loadModel() {
 		if (! $this->model instanceof \Plugin\Diary\Model && $this->model == null) {
 			$this->model = new Model ();
