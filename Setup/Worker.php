@@ -17,6 +17,7 @@ class Worker extends \Ip\SetupWorker
         `status` int(3),
         `modified` datetime,
         `comment` bigint(20),
+        `category_id` bigint(20)
         PRIMARY KEY (`id`)
         )';
         $sql2=' CREATE TABLE IF NOT EXISTS
