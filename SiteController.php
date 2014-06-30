@@ -6,7 +6,7 @@ class SiteController extends \Ip\Controller
 
 {
 
-    public function read()
+    public function read($postid=0)
     {   ipAddCss("assets/css/comment.css");
     	ipAddJsContent("create","
             require(['Diary/CommentController'],function(comment){
@@ -15,7 +15,14 @@ class SiteController extends \Ip\Controller
                 });
                 ",80);
 		$article=new Model();
+        if($postid === 0){
 		$id=(int)ipRequest()->getQuery('post');
+        }
+        else{
+        //From the Router    
+        $id=(int)$postid; 
+        }
+       
         $data=$article->getArticleById($id);
         //Assuming Record doesn't exists
         if($data === null){
