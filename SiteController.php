@@ -13,7 +13,7 @@ class SiteController extends \Ip\Controller
                 comment.init();
 
                 });
-                ");
+                ",80);
 		$article=new Model();
 		$id=(int)ipRequest()->getQuery('post');
         $data=$article->getArticleById($id);
@@ -35,8 +35,8 @@ class SiteController extends \Ip\Controller
         $paginator=$comment->getComments()->render(__DIR__."/view/frontend/comments.php");
        
         $data['comments']=$paginator;
-
-		return ipView(__DIR__."/view/frontend/_article.php",$data)->render();
+        
+        return ipView(__DIR__."/view/frontend/_article.php",$data)->render();
 
 
     }
