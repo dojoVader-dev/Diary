@@ -34,12 +34,23 @@ class Helper {
 		return ipDb ()->fetchAll ( $sql );
 	}
 	static public function getArticleById($id) {
+		try{
+		$sqlFormat="select ip_diary_blog.author,ip_diary_blog.date,ip_diary_blog.content,
+    	ip_diary_blog.id,title,ip_diary_blog.status,ip_diary_blog.category_id,dc.id as dcid ,dc.name 
+    	from ip_diary_blog INNER JOIN ip_diary_category dc ON ip_diary_blog.category_id=dc.id WHERE ip_diary_blog.id=:blog_id";
 		if (! is_int ( $id )) {
 			throw new \Ip\Exception\Plugin ( "Wrong Format passed in Diary Plugin in " . __CLASS__ );
 		}
-		return ipDb ()->selectRow ( 'diary_blog', "*", array (
-				'id' => $id
-		) );
+		//Bind the Value to the Statement
+		$query=ipDb()->getConnection()->prepare($sqlFormat);
+		$query->bindValue(":blog_id",$id,\PDO::PARAM_INT);
+		$query->execute();
+		$result = $query->fetch(\PDO::FETCH_ASSOC);
+		return $result ? $result : array();
+	}
+	catch (\PDOException $e) {
+            throw new \Ip\Exception\Db($e->getMessage(), $e->getCode(), $e);
+        }
 	}
 	static public function getCategoryForm() {
 		$category = new CategoryForm ();
