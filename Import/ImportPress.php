@@ -28,13 +28,14 @@ class ImportPress {
         $this->title = $this->simpleXML->title;
         $this->description = $this->simpleXML->description;
         $this->category = $this->simpleXML->category;
-        $this->getWPData (); // fetches all Data
+        $this->getItems(); // fetches all Data
     }
 
     /**
      * Handles the Processing of Retrieving the items from the XML
+     * @return void
      */
-    public function getItems(){
+    private function getItems(){
         $WPData = $this->simpleXML->children ( $this->namespace ["wp"] );
         $this->post_id = $WPData->post_id;
         $this->post_name = $WPData->post_name;
@@ -65,6 +66,21 @@ class ImportPress {
             );
             array_push ( $this->comments, $data );
         }
+    }
+
+    /**
+     * Imports the Category for the Post
+     */
+    public function importCategory(){
+        var_dump($this->category);
+    }
+
+    public function importComments(){
+        var_dump($this->comments);
+    }
+
+    public function importPost(){
+        var_dump($this);
     }
 }
 
