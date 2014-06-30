@@ -114,7 +114,7 @@ class Helper {
 			return $content;
 		}
 		else{
-		return sprintf("%s<br/><a href='%s'>Read More</a>",$string[0],ipActionUrl(array("sa"=>"Diary.read","post"=>$data['id'])));
+		return sprintf("%s<br/><a href='%s'>Read More</a>",$string[0],ipRouteUrl("article",array("postid"=>$data['id'])));
 		}
 	}
 }
