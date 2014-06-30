@@ -82,7 +82,7 @@ class AdminController extends \Ip\GridController {
 				");
 		$noteform = Helper::getNoteForm ();
 		//Set the fields
-		$noteform->getField('author')->setValue($edit['author']);
+		// $noteform->getField('author')->setValue($edit['author']);
 		$noteform->getField('title')->setValue($edit['title']);
 		$noteform->getField('content')->setValue($edit['content']);
 		$noteform->getField('aa')->setValue('Diary.AjaxUpdateNote');
