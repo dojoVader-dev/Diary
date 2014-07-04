@@ -8,6 +8,8 @@ namespace Plugin\Diary;
  * @author x64
  *
  */
+use \Plugin\Diary\Import\ImportDriver;
+
 class AdminController extends \Ip\GridController {
 	public $model;
 	/**
@@ -97,9 +99,25 @@ class AdminController extends \Ip\GridController {
 		) );
 	}
 	public function importWordPress(){
-		$form=Helper::getUploadForm();
-		return ipView("view/backend/import.php",array("form"=>$form));
+        //If Post has been set
+        $form=Helper::getUploadForm();
+        if(ipRequest()->isPost()){
+            $images = \Ip\Form\Field\File::getFiles(ipRequest()->getPost(), 'wordpress_file');
+            //Process the file
+            if(!isset($images)){
+                throw new Ip\Exception("Image is null");
+            }
+            $import=new ImportDriver($images[0]);
+            $import->import();
+            return new \Ip\Response\Redirect(ipActionUrl(array("aa"=>"Diary.index")));
+
+
+        }
+
+    return ipView("view/backend/import.php",array("form"=>$form));
 	}
+
+
 	private function loadModel() {
 		if (! $this->model instanceof \Plugin\Diary\Model && $this->model == null) {
 			$this->model = new Model ();

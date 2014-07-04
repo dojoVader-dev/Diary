@@ -65,6 +65,16 @@ class BaseModel {
 
     		return $result;
     	}
+
+    /**
+     * This function checks if the Column exists in the Database
+     * @param $col String Column of the Table
+     * @param $key Value of the Column searching against
+     * @return bool TRUE | FALSE
+     */
+    public function keyExists($col,$key){
+        return (ipDb()->selectRow($this->name,$col,array('name'=>$key)) === null ) ? false : true;
+    }
 }
 
 ?>

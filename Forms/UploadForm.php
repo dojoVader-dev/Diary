@@ -44,7 +44,8 @@ class UploadForm {
 		));
 		$this->form->setEnvironment(\Ip\Form::ENVIRONMENT_ADMIN);
 		$this->form->setMethod(\Ip\Form::METHOD_POST);
-
+        $this->form->addAttribute("enctype","multipart/form-data");
+        $this->form->setAjaxSubmit(false);
 	}
 	public function getForm(){
 		return $this->form;

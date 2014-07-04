@@ -37,7 +37,7 @@ class Event {
 			// ipAddJs("http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js",null,50);
 			ipAddJs("http://localhost/dojo1.9/dojo/dojo.js");
 			ipAddCss("http://localhost/dojo1.9/dijit/themes/claro/claro.css");
-			ipAddJs("assets/js/boot.js",null,90);
+			ipAddJs("assets/js/boot-front.js",null,90);
 			ipAddJs("assets/js/holder.js",null,90);
 			// ipAddCss("http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/claro/claro.css");
 			//Font Awesome

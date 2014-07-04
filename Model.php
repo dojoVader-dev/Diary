@@ -37,21 +37,21 @@ class Model extends BaseModel {
     	/**
 		@todo hardcoded value, change later
     	 */
-    	$pageSize=30;
+    	$psize=$pageSize;
     	$recordCount = (int)ipDb ()->fetchValue ( sprintf ( "SELECT COUNT(*) from %s", ipTable ($table) ) );
-    	$totalPages =(int) ceil ( $recordCount / $pageSize);
+    	$totalPages =(int) ceil ( $recordCount / $psize);
     	$currentPage = $currentPageIdx;
     	if ($currentPage > $totalPages) {
     		$currentPage = $totalPages;
     	}
-    	$from = (abs($currentPage - 1)) * $pageSize;
+    	$from = (abs($currentPage - 1)) * $psize;
 
     	//Empty Result
     	$pagination = new \Ip\Pagination\Pagination ( array (
-    			'data'=>$this->fetch($from, $pageSize),
+    			'data'=>$this->fetch($from, $psize),
     			'currentPage' => $currentPage,
     			'totalPages' => $totalPages,
-    			'pagerSize' => $pageSize
+    			'pagerSize' => $psize
     	) );
     	return $pagination;
 

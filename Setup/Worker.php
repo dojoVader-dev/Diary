@@ -7,9 +7,8 @@ class Worker extends \Ip\SetupWorker
     public function activate()
     {
         $sql1 = ' CREATE TABLE IF NOT EXISTS
-           ' . ipTable('diary_blog') . '
-        (
-        `id` int(11) NOT NULL AUTO_INCREMENT,
+           '. ipTable('diary_blog') .'
+        ( `id` int(11) NOT NULL AUTO_INCREMENT,
         `author` varchar(255),
         `date` datetime,
         `content` text,
@@ -17,7 +16,7 @@ class Worker extends \Ip\SetupWorker
         `status` int(3),
         `modified` datetime,
         `comment` bigint(20),
-        `category_id` bigint(20)
+        `category_id` bigint(20),
         PRIMARY KEY (`id`)
         )';
         $sql2=' CREATE TABLE IF NOT EXISTS
@@ -29,6 +28,7 @@ class Worker extends \Ip\SetupWorker
         `email` varchar(255),
         `url` varchar(255),
         `date` datetime,
+         `content` text NOT NULL,
         `modified` datetime,
         `approved` tinyint(1),
         `parent` int(11),
@@ -52,17 +52,17 @@ class Worker extends \Ip\SetupWorker
 
     public function deactivate()
     {
-		//We don't want it removed just incase it is re-enabled in the future
+        //We don't want it removed just incase it is re-enabled in the future
     }
 
     public function remove()
     {
-    	$sql = 'DROP TABLE IF EXISTS ' . ipTable('diary_blog');
-    	$sql .= 'DROP TABLE IF EXISTS ' . ipTable('diary_comments');
-    	$sql .= 'DROP TABLE IF EXISTS ' . ipTable('diary_category');
+        $sql = 'DROP TABLE IF EXISTS ' . ipTable('diary_blog');
+        $sql .= 'DROP TABLE IF EXISTS ' . ipTable('diary_comments');
+        $sql .= 'DROP TABLE IF EXISTS ' . ipTable('diary_category');
 
 
-    	ipDb()->execute($sql);
+        ipDb()->execute($sql);
     }
 
 }

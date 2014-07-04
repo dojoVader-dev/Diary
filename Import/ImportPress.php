@@ -7,6 +7,10 @@
  */
 
 namespace Plugin\Diary\Import;
+use Plugin\Diary\Helper;
+use Plugin\Diary\CategoryModel;
+use Plugin\Diary\Model;
+use Plugin\Diary\CommentModel;
 
 
 class ImportPress {
@@ -23,7 +27,12 @@ class ImportPress {
     private $comments = array ();
     private $category;
 
-    public function __construct(SimpleXMLElement $items) {
+    private $Saved_Category_ID;
+    private $Saved_Post_ID;
+    private $Saved_Comment_ID;
+
+
+    public function __construct(\SimpleXMLElement $items) {
         $this->simpleXML = $items;
         $this->title = $this->simpleXML->title;
         $this->description = $this->simpleXML->description;
@@ -54,15 +63,15 @@ class ImportPress {
         foreach ( $Comments as $items ) {
 
             $data = array (
-                "comment_id" => $items->comment_id,
-                "comment_author" => ( string ) trim ( $items->comment_author ),
-                "comment_author_mail" => $items->comment_author_email,
-                "author_url" => $items->author_url,
-                "comment_author_IP" => $items->comment_author_IP,
-                "comment_date" => $items->comment_date,
-                "comment_date_gmt" => $items->comment_date_gmt,
-                "comment_content" => ( string ) trim ( $items->comment_content ),
-                "comment_approved" => $items->comment_approved
+
+                "author" => ( string ) trim ( $items->comment_author ),
+                "email" => $items->comment_author_email,
+                "url" => $items->author_url,
+                "date" => $items->comment_date,
+                "modified"=>date( 'Y-m-d H:i:s', time()),
+                "content" => ( string ) trim ( $items->comment_content ),
+                "approved" =>(int) $items->comment_approved,
+                "parent"=>0
             );
             array_push ( $this->comments, $data );
         }
@@ -72,15 +81,52 @@ class ImportPress {
      * Imports the Category for the Post
      */
     public function importCategory(){
-        var_dump($this->category);
+        #let's save the Category to the Database before the HR Catches me
+        $CategoryData=array();
+        $CategoryData['name']=$this->category['nicename'];
+        $CategoryData['description']="Description of the Category to be Set";
+        $CategoryData['count']=0;
+        //Save the Data
+        $CategorModel=new CategoryModel();
+        if($CategorModel->keyExists("name",$CategoryData['name'])){
+            $this->Saved_Category_ID=ipDb()->selectValue("diary_category",'id',array('name'=>$CategoryData['name']));
+        }
+        else{
+            $this->Saved_Category_ID=$CategorModel->save($CategoryData);
+        }
+
     }
 
     public function importComments(){
-        var_dump($this->comments);
+        foreach($this->comments as $data){
+        //Save the comments in the database
+
+            $CommentModel= new CommentModel();
+            $CommentModel->email=$data['email'];
+            $CommentModel->author=$data['author'];
+            $CommentModel->url=$data['url'];
+            $CommentModel->date=$data['date'];
+            $CommentModel->content=$data['content'];
+            $CommentModel->approved=$data['approved'];
+            $CommentModel->parent=$data['parent'];
+            $CommentModel->save();
+
+        }
     }
 
+    /**
+     * @todo Remove HardCoded Status
+     */
     public function importPost(){
-        var_dump($this);
+      //Save the Post
+      $Model=new Model();
+      $Model->author=Helper::getAuthor();
+      $Model->date=$Model->modified=date ( 'Y-m-d H:i:s', time () );
+      $Model->content=$this->content;
+      $Model->title=$this->title;
+      $Model->status=1;
+      $Model->category_id=$this->Saved_Category_ID;
+      $this->Saved_Post_ID=$Model->save();
     }
 }
 

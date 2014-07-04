@@ -20,23 +20,26 @@ class ImportDriver {
         if(!file_exists($file)){
             throw new \Exception(sprintf("%s doesn't exist",$file));
         }
-        $this->$XMLInstance=simplexml_load_file($file);
+        $this->XMLInstance=simplexml_load_file($file);
 
     }
 
     public function import(){
-        foreach ( $this->$XMLInstance->channel->item as $items ) {
+
+        foreach ( $this->XMLInstance->channel->item as $items ) {
 
 
             $WP = $items->children ( "http://wordpress.org/export/1.2/" );
 
-            if($WP->post_type === "post") {
+            if((string) $WP->post_type === "post") {
                 $Post=new ImportPress($items);
-
-
-
+                $Post->importCategory();
+                $Post->importPost();
+                $Post->importComments();
             }
         }
+
+
     }
 
 

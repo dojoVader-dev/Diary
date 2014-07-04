@@ -13,7 +13,9 @@ class CategoryModel extends BaseModel {
 	const DRAFT = 0;
 	const PUBLISHED = 1;
 	public function save($data) {
+
 		return ipDb ()->insert ( "diary_category", $data );
+
 	}
 	/**
 	 * Returns an Array of Status for the Category
