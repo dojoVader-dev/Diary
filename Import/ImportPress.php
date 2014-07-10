@@ -29,7 +29,7 @@ class ImportPress {
 
     private $Saved_Category_ID;
     private $Saved_Post_ID;
-    private $Saved_Comment_ID;
+
 
 
     public function __construct(\SimpleXMLElement $items) {
@@ -109,6 +109,7 @@ class ImportPress {
             $CommentModel->content=$data['content'];
             $CommentModel->approved=$data['approved'];
             $CommentModel->parent=$data['parent'];
+            $CommentModel->post_id=$this->Saved_Post_ID;
             $CommentModel->save();
 
         }
@@ -121,7 +122,7 @@ class ImportPress {
       //Save the Post
       $Model=new Model();
       $Model->author=Helper::getAuthor();
-      $Model->date=$Model->modified=date ( 'Y-m-d H:i:s', time () );
+      $Model->date=$this->date;
       $Model->content=$this->content;
       $Model->title=$this->title;
       $Model->status=1;
