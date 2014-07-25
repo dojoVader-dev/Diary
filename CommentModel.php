@@ -47,7 +47,6 @@ class CommentModel extends BaseModel
     }
 
     private function beforeSave(){
-    	$this->date=$this->modified=date('Y-m-d H:i:s',time());
     	$this->approved=self::PENDING;
     	$this->parent=0;
     }
@@ -85,7 +84,7 @@ class CommentModel extends BaseModel
 
     private function fetch($from, $count, $where = 1) {
 
-        $sortField = 'id';
+        $sortField = 'date';
 
 
         $sql = "
