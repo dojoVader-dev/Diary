@@ -61,7 +61,7 @@ class Model extends BaseModel {
 
 	private function fetch($from, $count, $where = 1) {
 
-    	$sortField = 'id';
+    	$sortField = 'date DESC';
     	// select ip_diary_blog.author,ip_diary_blog.date,ip_diary_blog.content,ip_diary_blog.id,title,ip_diary_blog.status,ip_diary_blog.category_id,dc.id as dcid ,dc.name 
     	// from ip_diary_blog INNER JOIN ip_diary_category dc ON ip_diary_blog.category_id=dc.id
 
@@ -112,7 +112,7 @@ class Model extends BaseModel {
 		return Helper::DeleteNote ( $id );
 	}
 	private function beforeSave() {
-		$this->date = $this->modified = date ( 'Y-m-d H:i:s', time () ); // Generate the time for now
+		$this->modified = date ( 'Y-m-d H:i:s', time () ); // Generate the time for now
 		$this->author = Helper::getAuthor ();
 	}
 }
