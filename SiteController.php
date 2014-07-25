@@ -39,10 +39,11 @@ class SiteController extends \Ip\Controller
 
         //Fetch Commentmodel
         $comment=new CommentModel();
-        $paginator=$comment->getComments()->render(__DIR__."/view/frontend/comments.php");
-       
+        $comment->post_id=$id;
+        $paginator=$comment->getComments($id)->render(__DIR__."/view/frontend/comments.php");
+
         $data['comments']=$paginator;
-        
+
         return ipView(__DIR__."/view/frontend/_article.php",$data)->render();
 
 
