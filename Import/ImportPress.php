@@ -51,7 +51,7 @@ class ImportPress {
         $this->type = $WPData->post_type;
         $this->comment_status = $WPData->comment_status;
         $this->image_url = $WPData->attachment_url;
-        $this->time=$WPData->post_date;
+        $this->time=(string)$WPData->post_date;
         // Fetch the Content to be Used
         $Content = $this->simpleXML->children ( $this->namespace ["content"] );
 
@@ -122,12 +122,13 @@ class ImportPress {
       //Save the Post
       $Model=new Model();
       $Model->author=Helper::getAuthor();
-      $Model->date=$this->date;
+      $Model->date=$this->time;
       $Model->content=$this->content;
       $Model->title=$this->title;
       $Model->status=1;
       $Model->category_id=$this->Saved_Category_ID;
       $this->Saved_Post_ID=$Model->save();
+
     }
 }
 
