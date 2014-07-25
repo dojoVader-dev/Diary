@@ -52,17 +52,19 @@ class Worker extends \Ip\SetupWorker
 
     public function deactivate()
     {
-        //We don't want it removed just incase it is re-enabled in the future
+        $sql1 = 'DROP TABLE IF EXISTS ' . ipTable('diary_blog');
+        $sql2= 'DROP TABLE IF EXISTS ' . ipTable('diary_comments');
+        $sql3= 'DROP TABLE IF EXISTS ' . ipTable('diary_category');
+
+
+        ipDb()->execute($sql1);
+        ipDb()->execute($sql2);
+        ipDb()->execute($sql3);
     }
 
     public function remove()
     {
-        $sql = 'DROP TABLE IF EXISTS ' . ipTable('diary_blog');
-        $sql .= 'DROP TABLE IF EXISTS ' . ipTable('diary_comments');
-        $sql .= 'DROP TABLE IF EXISTS ' . ipTable('diary_category');
 
-
-        ipDb()->execute($sql);
     }
 
 }
