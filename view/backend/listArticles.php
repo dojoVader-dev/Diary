@@ -6,8 +6,9 @@
 foreach($data as $post):?>
 <li id="post-<?php echo $post['id'] ?>">
 <h2><a href="#" data-articleid="<?php echo $post['id']?>" class='Diary_AjaxTitle'><?php echo $post['title'];?></a></h2>
-<p><small>Author:<?php echo $post['author'];?></small></p>
-<p><small>Created:<?php echo $post['date']?></small></p>
+<p><small><strong>Author:</strong> <?php echo $post['author'];?></small></p>
+<p><small><strong>Created:</strong> <?php echo $post['date']?></small></p>
+<p><small><strong>Updated:</strong> <?php echo $post['modified']?></small></p>
 
 <div class="btn-group btn-group-sm">
   <button type="button" class="btn btn-default"><a href="<?php echo ipActionUrl(array('aa'=>'Diary.edit','id'=>$post['id'])); ?>">Edit</a></button>
