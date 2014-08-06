@@ -32,7 +32,7 @@ class Model extends BaseModel {
 		);
 		return ipDb ()->insert ( "diary_blog", $saveData );
 	}
-	public function getPaginator($table, $currentPageIdx,$pageSize) {
+	public function getPaginator($table, $currentPageIdx,$pageSize,$front=false) {
     	// let's fetch the total from the Database first
     	/**
 		@todo hardcoded value, change later
@@ -48,7 +48,7 @@ class Model extends BaseModel {
 
     	//Empty Result
     	$pagination = new \Ip\Pagination\Pagination ( array (
-    			'data'=>$this->fetch($from, $psize),
+    			'data'=>($front === true) ? $this->fetch($from, $psize,"status='1'") : $this->fetch($from, $psize),
     			'currentPage' => $currentPage,
     			'totalPages' => $totalPages,
     			'pagerSize' => $psize
@@ -61,18 +61,20 @@ class Model extends BaseModel {
 
 	private function fetch($from, $count, $where = 1) {
 
-    	$sortField = 'date DESC';
+    	$sortField = 'modified DESC';
     	// select ip_diary_blog.author,ip_diary_blog.date,ip_diary_blog.content,ip_diary_blog.id,title,ip_diary_blog.status,ip_diary_blog.category_id,dc.id as dcid ,dc.name 
     	// from ip_diary_blog INNER JOIN ip_diary_category dc ON ip_diary_blog.category_id=dc.id
 
     	$sql = "select ip_diary_blog.author,ip_diary_blog.date,ip_diary_blog.content,
-    	ip_diary_blog.id,title,ip_diary_blog.status,ip_diary_blog.category_id,dc.id as dcid ,dc.name 
-    	from ip_diary_blog INNER JOIN ip_diary_category dc ON ip_diary_blog.category_id=dc.id ORDER BY " . $sortField . "
+    	ip_diary_blog.id,ip_diary_blog.modified,title,ip_diary_blog.status,ip_diary_blog.category_id,dc.id as dcid ,dc.name 
+    	from ip_diary_blog INNER JOIN ip_diary_category dc ON ip_diary_blog.category_id=dc.id WHERE $where ORDER BY " . $sortField . "
                 LIMIT
                 $from, $count
                 ";
-
+      
                 $result = ipDb ()->fetchAll ( $sql );
+
+
 
 
     		return $result;
@@ -80,11 +82,13 @@ class Model extends BaseModel {
 
 
 
+
+
 	public function update() {
+		$this->isNewRecord=true;
 		$this->beforeSave ();
 		$updateData = array (
 				"author" => $this->author,
-				"date" => $this->date,
 				"content" => $this->content,
 				"title" => $this->title,
 				"status" => $this->status,
@@ -92,6 +96,7 @@ class Model extends BaseModel {
 				"comment" => $this->comment,
 				"category_id" => $this->category_id
 		);
+			$this->isNewRecord=false;
 		return ipDb ()->update ( "diary_blog", $updateData, array (
 				"id" => $this->id
 		) );
@@ -112,8 +117,10 @@ class Model extends BaseModel {
 		return Helper::DeleteNote ( $id );
 	}
 	private function beforeSave() {
+		if($this->isNewRecord):
 		$this->modified = date ( 'Y-m-d H:i:s', time () ); // Generate the time for now
 		$this->author = Helper::getAuthor ();
+		endif;
 	}
 }
 
