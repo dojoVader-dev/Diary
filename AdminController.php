@@ -89,13 +89,15 @@ class AdminController extends \Ip\GridController {
 		$noteform->getField('content')->setValue($edit['content']);
 		$noteform->getField('aa')->setValue('Diary.AjaxUpdateNote');
 		$noteform->getField('create')->setValue('Update');
+        $noteform->getField('status')->setValue($edit['status']);
 		$noteform->getField('updateField')->setValue($edit['id']);
 
 		$noteform->getField ( 'category_id' )->setValues ( $categoryModel->getCategoryOptions () );
 		$noteform->getField('category_id')->setValue($edit['category_id']);
-		$formView = $noteform->render ( ipView ( "view/backend/form/add.php"));
+		$formView = $noteform->render ( ipView ( "view/backend/form/edit.php"));
 		return ipView ( "view/backend/add.php", array (
-				'form' => $formView
+				'form' => $formView,
+                'data'=>$edit
 		) );
 	}
 	public function importWordPress(){
