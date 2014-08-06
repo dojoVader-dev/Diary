@@ -15,6 +15,10 @@ class BaseModel {
      * @param int PageSize the number of Items to fetch
      * @return IP\Pagination if result is found and FALSE if empty result
      */
+    /**
+     * Flags the Model that the Record is being Updated
+     * */
+    public $isNewRecord=false;
     public function getPaginator($table, $currentPageIdx,$pageSize) {
     	// let's fetch the total from the Database first
     	/**
