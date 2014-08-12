@@ -50,7 +50,14 @@ echo $form->getField('updateField')->render($this->getDoctype(), \Ip\Form::ENVIR
 <?php
 ipAddJsContent('ckeditor',"jQuery(document).ready(function(){
 	//Buhahahahahaha Replace CKEditor
-	CKEDITOR.replace( 'content');
+	CKEDITOR.replace( 'content',{
+    filebrowserBrowseUrl =ip.baseUrl+'/kcfinder/browse.php?opener=ckeditor&type=files';
+    filebrowserImageBrowseUrl = ip.baseUrl+'/kcfinder/browse.php?opener=ckeditor&type=images';
+    filebrowserFlashBrowseUrl = ip.baseUrl+'/kcfinder/browse.php?opener=ckeditor&type=flash';
+    filebrowserUploadUrl = ip.baseUrl+'/kcfinder/upload.php?opener=ckeditor&type=files';
+    filebrowserImageUploadUrl = ip.baseUrl+'/kcfinder/upload.php?opener=ckeditor&type=images';
+    filebrowserFlashUploadUrl = ip.baseUrl+'/kcfinder/upload.php?opener=ckeditor&type=flash';
+});
 });")
 ?>
 
