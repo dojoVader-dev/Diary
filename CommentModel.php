@@ -71,7 +71,7 @@ class CommentModel extends BaseModel
 
         //Empty Result
         $pagination = new \Ip\Pagination\Pagination ( array (
-            'data'=>$this->fetch($from, $pageSize,"post_id=".$this->post_id),
+            'data'=>$this->fetch($from, $pageSize,"post_id=".$this->post_id." AND approved=".self::APPROVED),
             'currentPage' => $currentPage,
             'totalPages' => $totalPages,
             'pagerSize' => $pageSize
