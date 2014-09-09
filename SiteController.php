@@ -69,6 +69,7 @@ class SiteController extends \Ip\Controller
     			$comment->author=ipRequest()->getPost("author");
     			$comment->content=ipRequest()->getPost("content");
                 $comment->post_id=(int)ipRequest()->getPost('post_id');
+                $comment->date=date('Y-m-d H:i:s',time()); 
     			try{
     				if ($id = $comment->save()) {
     					// Redirect to the Edit Page
