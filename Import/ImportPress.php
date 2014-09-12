@@ -127,6 +127,7 @@ class ImportPress {
       $Model->title=$this->title;
       $Model->status=1;
       $Model->category_id=$this->Saved_Category_ID;
+      $Model->alias=str_replace(" ","_",strip_tags($Model->title));
       $this->Saved_Post_ID=$Model->save();
 
     }
