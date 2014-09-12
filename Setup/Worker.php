@@ -13,6 +13,7 @@ class Worker extends \Ip\SetupWorker
         `date` datetime,
         `content` text,
         `title` varchar(255),
+        `alias` varchar(255),
         `status` int(3),
         `modified` datetime,
         `comment` bigint(20),

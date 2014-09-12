@@ -6,8 +6,10 @@ class SiteController extends \Ip\Controller
 
 {
 
-    public function read($postid=0)
-    {   ipAddCss("assets/css/comment.css");
+    public function read($articleName)
+    {   
+
+        ipAddCss("assets/css/comment.css");
     	ipAddJsContent("create","
             require(['Diary/CommentController'],function(comment){
                 comment.init();
@@ -15,21 +17,17 @@ class SiteController extends \Ip\Controller
                 });
                 ",80);
 		$article=new Model();
-        if($postid === 0){
-		$id=(int)ipRequest()->getQuery('post');
-        }
-        else{
-        //From the Router    
-        $id=(int)$postid; 
-        }
+        
+        
        
-        $data=$article->getArticleById($id);
+        $data=$article->getArticleByAlias($articleName);
+
         //Assuming Record doesn't exists
         if($data === null){
             return new \Ip\Response\Redirect(ipHomeUrl());
         }
 		$commentForm=Helper::getCommentForm();
-        $commentForm->getField('post_id')->setValue($id);
+        $commentForm->getField('post_id')->setValue((int)$data['id']);
 	
 
 
@@ -39,8 +37,8 @@ class SiteController extends \Ip\Controller
 
         //Fetch Commentmodel
         $comment=new CommentModel();
-        $comment->post_id=$id;
-        $paginator=$comment->getComments($id)->render(__DIR__."/view/frontend/comments.php");
+        $comment->post_id=(int)$data['id'];
+        $paginator=$comment->getComments((int)$data['id'])->render(__DIR__."/view/frontend/comments.php");
 
         $data['comments']=$paginator;
 

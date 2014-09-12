@@ -17,6 +17,7 @@ class Model extends BaseModel {
 	public $modified;
 	public $comment;
 	public $category_id;
+	public $alias;
 	public function save() {
 		$this->beforeSave ();
 		// Save Data
@@ -28,7 +29,9 @@ class Model extends BaseModel {
 				"status" => $this->status,
 				"modified" => $this->modified,
 				"comment" => $this->comment,
-				"category_id" => $this->category_id
+				"category_id" => $this->category_id,
+				"alias"=>$this->alias
+
 		);
 		return ipDb ()->insert ( "diary_blog", $saveData );
 	}
@@ -66,7 +69,7 @@ class Model extends BaseModel {
     	// from ip_diary_blog INNER JOIN ip_diary_category dc ON ip_diary_blog.category_id=dc.id
 
     	$sql = "select ip_diary_blog.author,ip_diary_blog.date,ip_diary_blog.content,
-    	ip_diary_blog.id,ip_diary_blog.modified,title,ip_diary_blog.status,ip_diary_blog.category_id,dc.id as dcid ,dc.name 
+    	ip_diary_blog.id,ip_diary_blog.modified,ip_diary_blog.alias,title,ip_diary_blog.status,ip_diary_blog.category_id,dc.id as dcid ,dc.name 
     	from ip_diary_blog INNER JOIN ip_diary_category dc ON ip_diary_blog.category_id=dc.id WHERE $where ORDER BY " . $sortField . "
                 LIMIT
                 $from, $count
@@ -113,13 +116,18 @@ class Model extends BaseModel {
 	public function getArticleById($id) {
 		return Helper::getArticleById ( $id );
 	}
+	public function getArticleByAlias($id) {
+		return Helper::getArticleByAlias( $id );
+	}
 	public function Delete($id) {
 		return Helper::DeleteNote ( $id );
 	}
 	private function beforeSave() {
 		if($this->isNewRecord):
-		$this->modified = date ( 'Y-m-d H:i:s', time () ); // Generate the time for now
+		$this->modified = (isset($this->date) ? $this->date : date('Y-m-d H:i:s',time()));
 		$this->author = Helper::getAuthor ();
+		//Create alias for the page
+		$this->alias=str_replace(" ","_",strip_tags($this->title));
 		endif;
 	}
 }

@@ -1,11 +1,11 @@
 <?php
 
-$routes['article{/postid}'] = array(
+$routes['article{/articleName}'] = array(
     'plugin' => 'Diary',
     'controller' => 'SiteController',
     'action' => 'read',
     'name'=>'article',
     'where' => array(
-        'postid' => '\d+',
+        'articleName' => '\w.+',
     )
 );
