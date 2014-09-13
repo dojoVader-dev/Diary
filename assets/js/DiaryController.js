@@ -64,7 +64,7 @@ define(['dojox/mvc/Output','dojo/Stateful','dojox/mvc/at','dojo/on',
 		e.stopPropagation();
 	});
 
-	on($("button.ajaxLinkDelete"),'click',function(e){
+	on($("a.ajaxLinkDelete"),'click',function(e){
 			//small nifty function to handle params
 
 		 $.ajax({

@@ -51,12 +51,12 @@ echo $form->getField('updateField')->render($this->getDoctype(), \Ip\Form::ENVIR
 ipAddJsContent('ckeditor',"jQuery(document).ready(function(){
 	//Buhahahahahaha Replace CKEditor
 	CKEDITOR.replace( 'content',{
-    filebrowserBrowseUrl =ip.baseUrl+'/kcfinder/browse.php?opener=ckeditor&type=files';
-    filebrowserImageBrowseUrl = ip.baseUrl+'/kcfinder/browse.php?opener=ckeditor&type=images';
-    filebrowserFlashBrowseUrl = ip.baseUrl+'/kcfinder/browse.php?opener=ckeditor&type=flash';
-    filebrowserUploadUrl = ip.baseUrl+'/kcfinder/upload.php?opener=ckeditor&type=files';
-    filebrowserImageUploadUrl = ip.baseUrl+'/kcfinder/upload.php?opener=ckeditor&type=images';
-    filebrowserFlashUploadUrl = ip.baseUrl+'/kcfinder/upload.php?opener=ckeditor&type=flash';
+    filebrowserBrowseUrl:ip.baseUrl+'Plugin/Diary/kcfinder/browse.php?opener=ckeditor&type=files',
+    filebrowserImageBrowseUrl:ip.baseUrl+'Plugin/Diary/kcfinder/browse.php?opener=ckeditor&type=images',
+    filebrowserFlashBrowseUrl : ip.baseUrl+'Plugin/Diary/kcfinder/browse.php?opener=ckeditor&type=flash',
+    filebrowserUploadUrl : ip.baseUrl+'Plugin/Diary/kcfinder/upload.php?opener=ckeditor&type=files',
+    filebrowserImageUploadUrl : ip.baseUrl+'Plugin/Diary/kcfinder/upload.php?opener=ckeditor&type=images',
+    filebrowserFlashUploadUrl : ip.baseUrl+'Plugin/Diary/kcfinder/upload.php?opener=ckeditor&type=flash'
 });
 });")
 ?>

@@ -159,8 +159,9 @@ class AdminController extends \Ip\GridController {
 				$note->status = ipRequest ()->getPost ( 'status' );
 				$note->comment = 0;
 				$note->category_id = ipRequest ()->getPost ( 'category_id' );
-
+				$note->date=date('Y-m-d H:i:s',time());				
 				$note->title = ipRequest ()->getPost ( 'title' );
+				$note->alias=str_replace(" ","_",strip_tags($note->title));
 				if ($id = $note->save ()) {
 					// Redirect to the Edit Page
 				//Success

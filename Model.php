@@ -64,7 +64,7 @@ class Model extends BaseModel {
 
 	private function fetch($from, $count, $where = 1) {
 
-    	$sortField = 'modified DESC';
+    	$sortField = 'date DESC';
     	// select ip_diary_blog.author,ip_diary_blog.date,ip_diary_blog.content,ip_diary_blog.id,title,ip_diary_blog.status,ip_diary_blog.category_id,dc.id as dcid ,dc.name 
     	// from ip_diary_blog INNER JOIN ip_diary_category dc ON ip_diary_blog.category_id=dc.id
 
@@ -97,7 +97,8 @@ class Model extends BaseModel {
 				"status" => $this->status,
 				"modified" => $this->modified,
 				"comment" => $this->comment,
-				"category_id" => $this->category_id
+				"category_id" => $this->category_id,
+				"alias"=>str_replace(" ","_",strip_tags($this->title))
 		);
 			$this->isNewRecord=false;
 		return ipDb ()->update ( "diary_blog", $updateData, array (
@@ -124,7 +125,7 @@ class Model extends BaseModel {
 	}
 	private function beforeSave() {
 		if($this->isNewRecord):
-		$this->modified = (isset($this->date) ? $this->date : date('Y-m-d H:i:s',time()));
+		$this->modified = date('Y-m-d H:i:s',time());
 		$this->author = Helper::getAuthor ();
 		//Create alias for the page
 		$this->alias=str_replace(" ","_",strip_tags($this->title));

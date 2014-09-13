@@ -11,8 +11,8 @@ foreach($data as $post):?>
 <p><small><strong>Updated:</strong> <?php echo $post['modified']?></small></p>
 
 <div class="btn-group btn-group-sm">
-  <button type="button" class="btn btn-default"><a href="<?php echo ipActionUrl(array('aa'=>'Diary.edit','id'=>$post['id'])); ?>">Edit</a></button>
-  <button type="button" class="btn btn-default ajaxLinkDelete" data-id="<?php echo $post['id']?>" ><a href="<?php echo ipActionUrl(array('aa'=>'Diary.delete','id'=>$post['id'])); ?>">Delete</a></button>
+  <a class="btn btn-default" href="<?php echo ipActionUrl(array('aa'=>'Diary.edit','id'=>$post['id'])); ?>">Edit</a>
+<a class="btn btn-default ajaxLinkDelete" data-id="<?php echo $post['id']?>" href="<?php echo ipActionUrl(array('aa'=>'Diary.delete','id'=>$post['id'])); ?>">Delete</a>
 
   </div>
 </li>
