@@ -6,9 +6,15 @@ Diary is a plugin created by Okeowo Aderemi, the purpose of this plugin is to cr
 ####Comments
 * Adding of Comments - Done
 * Display of Comments on Notes - Done
+* 
+#### SEO Meta tags
+* Ability to set Tags for Meta tags this will help in Google PageRank
+* Backlinks
+
+#### Alter GUI 
 
 #### Diary Coverpage
-* Using of Image as cover page for post - 
+* Using of Image as cover page for post - TBA
 
 ####Category
 * Sub-Categories 
