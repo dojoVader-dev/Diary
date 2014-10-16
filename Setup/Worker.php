@@ -11,7 +11,7 @@ class Worker extends \Ip\SetupWorker
         ( `id` int(11) NOT NULL AUTO_INCREMENT,
         `author` varchar(255),
         `date` datetime,
-        `content` text,
+        `content` MEDIUMTEXT,
         `title` varchar(255),
         `alias` varchar(255),
         `status` int(3),
