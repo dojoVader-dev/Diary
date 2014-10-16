@@ -1,4 +1,15 @@
 <!-- Parent Top -->
+<?php
+if(isset($_SESSION['notice'])):
+?>
+<div class="alert alert info">
+    <?php echo $_SESSION['notice']['message'];
+
+    $_SESSION['notice']=null;
+    ?>
+
+</div>
+<?php endif; ?>
 <div class="col-lg-12 col-md-12 col-xs-12">
 <form <?php echo $form->getClassesStr(); ?> <?php echo $form->getAttributesStr(); ?> method="<?php echo $form->getMethod(); ?>" action="<?php echo $form->getAction(); ?>" enctype="multipart/form-data">
 <div id="diarytitle">
