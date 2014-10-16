@@ -87,7 +87,7 @@ class AdminController extends \Ip\GridController {
 		// $noteform->getField('author')->setValue($edit['author']);
 		$noteform->getField('title')->setValue($edit['title']);
 		$noteform->getField('content')->setValue($edit['content']);
-		$noteform->getField('aa')->setValue('Diary.AjaxUpdateNote');
+		$noteform->getField('aa')->setValue('Diary.updatenote');
 		$noteform->getField('create')->setValue('Update');
         $noteform->getField('status')->setValue($edit['status']);
 		$noteform->getField('updateField')->setValue($edit['id']);
@@ -174,7 +174,8 @@ class AdminController extends \Ip\GridController {
 				}
 			}
 		}
-		return new \Ip\Response\Json($data);
+        $_SESSION['notice']=$data;
+        return new \Ip\Response\Redirect(ipActionUrl(array('aa'=>'Diary.edit','id'=>$id )));
 	}
 	/**
 	 * Deletes the Note from the Database
@@ -231,7 +232,8 @@ class AdminController extends \Ip\GridController {
 				}
 			}
 		}
-		return new \Ip\Response\Json($data);
+		$_SESSION['notice']=$data;
+        return new \Ip\Response\Redirect(ipActionUrl(array('aa'=>'Diary.edit','id'=>$note->id)));
 	}
 	/**
 	 * The Ajax Method to Save the Content
