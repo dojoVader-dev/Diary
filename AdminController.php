@@ -142,7 +142,7 @@ class AdminController extends \Ip\GridController {
 	/**
 	 * Ajax method to create Note for the Diary
 	 */
-	public function AjaxCreateNote() {
+	public function createnote() {
 		if (ipRequest ()->isPost ()) {
 			$form = Helper::getNoteForm ();
 			$errors = $form->validate ( ipRequest ()->getPost () );
@@ -202,7 +202,7 @@ class AdminController extends \Ip\GridController {
 		}
 		return new \Ip\Response\Json($message);
 	}
-	public function AjaxUpdateNote() {
+	public function updatenote() {
 		if (ipRequest ()->isPost ()) {
 			$form = Helper::getNoteForm ();
 			$errors = $form->validate ( ipRequest ()->getPost () );
