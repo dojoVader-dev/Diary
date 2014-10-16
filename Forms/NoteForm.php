@@ -90,10 +90,11 @@ class NoteForm {
 		//set the Admin Form
 		$this->form->addField(new \Ip\Form\Field\Hidden(array(
 				'name' => 'aa',
-				'value' => 'Diary.AjaxCreateNote',
+				'value' => 'Diary.createnote',
 		)));
 		$this->form->setEnvironment(\Ip\Form::ENVIRONMENT_ADMIN);
 		$this->form->setMethod(\Ip\Form::METHOD_POST);
+        $this->form->setAjaxSubmit(false);
 
 	}
 	public function getForm(){
