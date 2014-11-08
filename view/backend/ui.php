@@ -3,9 +3,15 @@ if($articles):
 ?>
 
 <div class="ipModuleAdministrators ipsModuleAdministrators edit">
-    <div class="col-sm-3 col-lg-3 col-md-3 customMenu" style="width:300px">
-       <?php echo $articles;?>
-    </div>
+    <div class="col-sm-3 col-lg-1 col-md-1 ui-diary-left">
+        <!--Author Image-->
+        <div class="tab-content">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" border="0" class="img-circle img-responsive"></a>
+        </div>
+        <div class="tab-content">
+            
+        </div>
+        </div>
     <br /><br />
 	<div class="col-md-8 col-lg-8 col-sm-8 col-xs-8" >
 
