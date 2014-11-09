@@ -20,9 +20,27 @@
   border: 1px solid #D8D8D8;
   padding: 3%;
 }
+.ui-diary-articlepane {
+  border-right: 1px solid #0D89AF;
+  height: 98%;
+  padding: 9% 5%;
+}
+.ui-diary-articlepane a {
+  color: white;
+}
+.ui-diary-richtext {
+  padding: 2%;
+}
+.ui-diary-richtext-pane {
+  padding: 6px 0px;
+  color: white;
+}
+.ui-diary-topbar {
+  height: 64px;
+  background: #12A0CE;
+}
 .ui-diary-left {
   background: #414D64 !important;
-  left: -27px;
   max-height: 100%;
   height: 100%;
   padding: 0px !important;
@@ -30,6 +48,7 @@
 .ui-diary-left a {
   text-decoration: none;
   color: #bbb2c2;
+  height: 64px;
 }
 .ui-diary-left ul li {
   text-align: center;
@@ -40,39 +59,22 @@
 .ui-diary-left ul li p {
   color: white;
   font-weight: bold;
+  font-size: 12px;
 }
 .ip .ipAdminContentWrapper {
   margin-left: 0px !important;
   margin-right: 0px !important;
   padding: 0px !important;
 }
-#diaryrte,
-#diarytitle,
-#diarysetting {
-  background: #FAFAFE;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  margin-top: 1% !important;
-  width: 100%;
-  -webkit-box-shadow: 0px 1px 1px #cabdbd;
-  -moz-box-shadow: 0px 1px 1px #cabdbd;
-  box-shadow: 0px 1px 1px #cabdbd;
-  padding: 0.5%;
-}
-#diarytitle {
-  width: 100%;
-  background: #FAFAFE;
-}
-#diarysetting {
-  width: 29%;
-}
 .ipsGrid {
   padding: 2% !important;
 }
 .ip .ipModuleAdministrators {
-  padding-left: 2% !important;
+  padding-left: 0% !important;
 }
 .ip .ipModuleAdministrators ._menu ul a {
   padding: 1px 20px;
+}
+.killPadding {
+  padding: 0px !important;
 }

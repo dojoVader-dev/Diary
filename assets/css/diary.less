@@ -18,19 +18,41 @@ border:1px solid lightpink;
     border: 1px solid #D8D8D8;
     padding: 3%;
 }
+.ui-diary-articlepane{
+  border-right:1px solid #0D89AF;
+  height:98%;
+  padding:9% 5%;
+  a{
+    color:white;
+  }
+}
+.ui-diary-richtext{
+  padding:2%;
+}
+.ui-diary-richtext-pane{
+ padding: 6px 0px;
+color: white;
+
+}
+.ui-diary-topbar{
+  height:64px;
+  background:#12A0CE;
+
+}
 .ui-diary-left{
   background:#414D64 !important;
-  left:-27px;
-  max-height:100%;
+   max-height:100%;
   height:100%;
   padding:0px !important;
   a{
     text-decoration:none;
     color:rgb(187, 178, 194);
+    height:64px;
 
   }
   ul{
     li{
+
       :hover{
         color:black;
       }
@@ -38,6 +60,7 @@ border:1px solid lightpink;
       p{
         color:white;
         font-weight:bold;
+        font-size: 12px;
       }
     }
   }
@@ -50,29 +73,17 @@ border:1px solid lightpink;
     margin-right: 0px !important;
 	padding:0px !important;
 }
-#diaryrte{
-	background:#FAFAFE;
-	.rounded(2px);
-	margin-top: 1% !important;
-	width:100%;
-	.box-shadow(0px 1px 1px rgb(202, 189, 189));
-	padding:0.5%;
-}
-#diarytitle:extend(#diaryrte){
-	width:100%;
-	background:#FAFAFE;
 
-}
-#diarysetting:extend(#diaryrte){
-	width:29%;
-}
 
 .ipsGrid{
 	padding:2% !important;
 }
 .ip .ipModuleAdministrators {
-	padding-left:2% !important;
+	padding-left:0% !important;
 	._menu ul a{
 	padding: 1px 20px;
 	}
+}
+.killPadding{
+  padding:0px !important;
 }

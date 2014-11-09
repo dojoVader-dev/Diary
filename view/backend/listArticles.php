@@ -1,5 +1,3 @@
-<h2>Articles</h2>
-<hr />
 <ul>
 <?php
 
