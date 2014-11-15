@@ -1,20 +1,28 @@
 <ul>
 <?php
+function getFormattedDate($data){
+ 
+    if(!$data){
+      throw new \Ip\Exception\Plugin("Invalid Argument passed to the function");
+      
+    }
+    $dateFormat=getdate(strtotime($data));
+      return sprintf("<h2>%s</h2> <h4>%d</h4>",$dateFormat['month'],$dateFormat['mday']);
+  }
 
 foreach($data as $post):?>
-<li id="post-<?php echo $post['id'] ?>">
-<h2><a href="#" data-articleid="<?php echo $post['id']?>" class='Diary_AjaxTitle'><?php echo $post['title'];?></a></h2>
-<p><small><strong>Author:</strong> <?php echo $post['author'];?></small></p>
-<p><small><strong>Created:</strong> <?php echo $post['date']?></small></p>
-<p><small><strong>Updated:</strong> <?php echo $post['modified']?></small></p>
+<li  class="ui-diary-articleList" id="post-<?php echo $post['id'] ?>">
+<div id="ui-diary-calendar" class="col-md-3 col-lg-3">
+  <?php echo getFormattedDate($post['date']); ?>
+</div>
+<div class="col-md-8 col-lg-8">
+<h3><a href="#" data-articleid="<?php echo $post['id']?>" class='Diary_AjaxTitle'><?php echo $post['title'];?></a></h3>
 
-<div class="btn-group btn-group-sm">
-  <a class="btn btn-default" href="<?php echo ipActionUrl(array('aa'=>'Diary.edit','id'=>$post['id'])); ?>">Edit</a>
-<a class="btn btn-default ajaxLinkDelete" data-id="<?php echo $post['id']?>" href="<?php echo ipActionUrl(array('aa'=>'Diary.delete','id'=>$post['id'])); ?>">Delete</a>
 
   </div>
+  <div class="clearfix"></div>
 </li>
-<hr />
+
 <?php endforeach;?>
 </ul>
 <!-- Pagination -->

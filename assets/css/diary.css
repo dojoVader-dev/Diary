@@ -21,19 +21,34 @@
   padding: 3%;
 }
 .ui-diary-articlepane {
-  border-right: 1px solid #0D89AF;
-  height: 98%;
-  padding: 9% 5%;
+  border-right: 1px solid #00B9F1;
+  height: 74%;
+  padding: 7% 5%;
 }
 .ui-diary-articlepane a {
   color: white;
 }
 .ui-diary-richtext {
   padding: 2%;
+  overflow: scroll;
+}
+.articleListPane #ui-diary-calendar {
+  border-right: 1px solid #d8d8d8;
+  text-align: center;
+}
+.articleListPane li {
+  list-style: none;
+  border-bottom: 1px solid #C7D3D6;
+  padding: 0%;
+  width: 97%;
+  border-right: 1px solid #C7D3D6;
 }
 .ui-diary-richtext-pane {
   padding: 6px 0px;
   color: white;
+}
+.ui-diary-richtext-pane h2 {
+  color: black;
 }
 .ui-diary-topbar {
   height: 64px;

@@ -10,6 +10,7 @@ namespace Plugin\Diary;
  */
 use \Plugin\Diary\Import\ImportDriver;
 
+
 class AdminController extends \Ip\GridController {
 	public $model;
 	/**

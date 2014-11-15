@@ -137,6 +137,7 @@ class Helper {
 		return sprintf("%s<br/><a href='%s'>Read More</a>",$string[0],ipRouteUrl("article",array("articleName"=>$data['alias'])));
 		}
 	}
+	
 }
 
 ?>

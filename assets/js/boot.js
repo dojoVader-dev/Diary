@@ -6,7 +6,8 @@ require(['Diary/DiaryController','dojo/parser'],function(DiaryController,parser)
 	$('document').ready(function(){
 		document.body.className+=" claro";
         //Fix the Height of left sidebar
-        $("div.ui-diary-left").height($('body').height());
+        $("div.ui-diary-left").height($('body')[0].scrollHeight);
+     
 		parser.parse();
 	});
 });
