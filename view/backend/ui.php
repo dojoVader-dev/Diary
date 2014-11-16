@@ -6,7 +6,7 @@ if($articles):
         <ul class="nav nav-pills nav-stacked" role="tablist" style="max-width: 300px;">
             <li class="active" role="presentation"><a href="#"><i class="fa fa-pencil-square-o fa-2x"></i><p>Articles</p></a>
             </li>
-            <li role="presentation"><a href="#"><i class="fa fa-comments-o fa-2x"></i><p>Comments</p></a></li>
+            <li role="presentation"><a href="<?php echo ipActionUrl(array("aa"=>"Diary.comment")) ?>"><i class="fa fa-comments-o fa-2x"></i><p>Comments</p></a></li>
         </ul>
     </div>
     <div class="col-md-11 col-lg-11 col-sm-9 col-xs-9 killPadding" >

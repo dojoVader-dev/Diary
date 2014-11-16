@@ -289,6 +289,7 @@ class AdminController extends \Ip\GridController {
 		$variables = array (
 				'gateway' => $gateway
 		);
+		
 		$content = ipView ( 'view/backend/placeholder.php', $variables )->render ();
 		return $content;
 	}

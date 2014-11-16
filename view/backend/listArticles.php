@@ -7,7 +7,7 @@ function getFormattedDate($data){
       
     }
     $dateFormat=getdate(strtotime($data));
-      return sprintf("<h2>%s</h2> <h4>%d</h4>",$dateFormat['month'],$dateFormat['mday']);
+      return sprintf("<h2>%s</h2> <h4>%d</h4><h5>%d</h5>",$dateFormat['month'],$dateFormat['mday'],$data);
   }
 
 foreach($data as $post):?>

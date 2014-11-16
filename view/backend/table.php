@@ -1,4 +1,4 @@
-<table class="table">
+<table class="tablex">
     <thead>
         <tr>
             <?php foreach($columns as $column) { ?>
